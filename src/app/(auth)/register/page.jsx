@@ -245,7 +245,7 @@ const handleGoogleSignUp = async ()=>{
                         </g>
                     </svg>
 
-                    Continue with Google
+                    Continue with Google as Tenant
 
                 </button>
 

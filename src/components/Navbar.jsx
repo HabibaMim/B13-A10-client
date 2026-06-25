@@ -5,7 +5,7 @@ import React from 'react';
 import logo from "../../public/assets/logo.png"
 import { Avatar } from '@heroui/react';
 import { authClient, signOut, useSession } from '@/lib/auth-client';
-import { useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 import { MdOutlineLogout } from 'react-icons/md';
 
@@ -13,6 +13,12 @@ const Navbar = () => {
 const {data:session, isPending} = useSession();
     const router =useRouter()
 //console.log(session)
+
+const pathName = usePathname()
+if(pathName.includes('dashboard')){
+    return null;
+}
+
     const handleSignout = async () => {
         await signOut();
         router.push('/')
@@ -52,7 +58,7 @@ const {data:session, isPending} = useSession();
 
                         {!isPending && session && <>
                             <li className="font-semibold text-violet-200">
-                                <Link href="/add-room">Dashboard</Link>
+                                <Link href="/dashboard">Dashboard</Link>
                             </li>
                             
                         </>}
@@ -88,7 +94,7 @@ const {data:session, isPending} = useSession();
                     {!isPending && session && <>
 
                         <li className="font-semibold text-[17px] text-violet-200">
-                            <Link href="/add-room">Dashboard</Link>
+                            <Link href="/dashboard">Dashboard</Link>
                         </li>
 
                     </>}

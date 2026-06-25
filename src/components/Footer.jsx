@@ -3,8 +3,15 @@ import Image from 'next/image';
 import React from 'react';
 import logo from "../../public/assets/logo.png"
 import { motion } from "motion/react"
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+
+const pathName = usePathname()
+if(pathName.includes('dashboard')){
+    return null;
+}
+
     return (
         <motion.div
         

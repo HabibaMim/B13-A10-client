@@ -6,8 +6,9 @@ import Image from "next/image";
 import { ChartColumn } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
+import Link from "next/link";
 
-export async function DashboardSidebar() {
+export default async function DashboardSidebar() {
 
     const session = await auth.api.getSession({
         headers: await headers()
@@ -22,19 +23,19 @@ export async function DashboardSidebar() {
             { icon: Plus, label: "Add Property" , link:'/dashboard/owner/add-property'},
             { icon: House, label: "My Properties" , link:'/dashboard/owner/my-properties' },
             { icon: Calendar, label: "Booking Requests" , link:'/dashboard/owner/booking-requests' },
-            { icon: Person, label: "Profile" , link:'/dashboard/profile' },
+            { icon: Person, label: "Profile" , link:'/dashboard/my-profile' },
         ],
 
         tenant: [{ icon: Calendar, label: "My Bookings" , link:'/dashboard/tenant'},
             { icon: Heart, label: "Favorites" , link:'/dashboard/tenant/favorites'},
-            { icon: Person, label: "Profile" , link:'/dashboard/profile' },
+            { icon: Person, label: "Profile" , link:'/dashboard/my-profile' },
         ],
 
-         admin: [{ icon: Persons, label: "All Users" , link:'/dashboard/owner'},
+         admin: [{ icon: Persons, label: "All Users" , link:'/dashboard/admin/all-users'},
             { icon: House, label: "All Properties" , link:'/dashboard/admin/all-properties'},
             { icon: Calendar, label: "All Bookings" , link:'/dashboard/admin/all-bookings' },
             { icon: CreditCard, label: "Transactions" , link:'/dashboard/admin/transactions' },
-            { icon: Person, label: "Profile" , link:'/dashboard/profile' },
+            { icon: Person, label: "Profile" , link:'/dashboard/my-profile' },
         ],
     }
 
@@ -60,11 +61,12 @@ export async function DashboardSidebar() {
 
         <div className="flex justify-center mb-6">
 
+         <Link href='/'>
           <Image
             src={logo}
             className="h-[65px] w-[85px] object-contain"
             alt="logo"
-          />
+          /></Link>
 
         </div>
 
@@ -72,9 +74,10 @@ export async function DashboardSidebar() {
 
         {navItems.map((item) => (
 
+       <Link key={item.label} href={item.link}>
           <button
 
-            key={item.label}
+            
 
             className="
             flex items-center gap-3 
@@ -98,6 +101,7 @@ export async function DashboardSidebar() {
             {item.label}
 
           </button>
+       </Link>
 
         ))}
 
@@ -139,9 +143,10 @@ export async function DashboardSidebar() {
 
                 {navItems.map((item) => (
 
+              <Link   key={item.label} href={item.link}>
                   <button
 
-                    key={item.label}
+                  
 
                     className="
                     flex items-center gap-3
@@ -167,6 +172,7 @@ export async function DashboardSidebar() {
 
                   </button>
 
+              </Link>
 
                 ))}
 

@@ -8,6 +8,9 @@ export async function proxy(request) {
       
         headers : await headers()
     });
+
+
+
 if(!session && !session?.user) {
       return NextResponse.redirect(new URL('/login', request.url))
 }
@@ -17,5 +20,5 @@ if(!session && !session?.user) {
 // export default function proxy(request: NextRequest) { ... }
  
 export const config = {
-  matcher: ['/dashboard']
+  matcher: ['/dashboard/:path']
 }

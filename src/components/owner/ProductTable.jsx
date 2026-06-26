@@ -136,7 +136,7 @@ export default function ProductTable({ properties }) {
                     <Table.Cell className="!bg-base-300 border-none">
 
                       <span className="text-violet-200">
-                        ৳ {property.rentPrice}
+                        ৳ {property.rentPrice} <span className="text-[10px] text-gray-400">/{property.rentType}</span>
                       </span>
 
                     </Table.Cell>

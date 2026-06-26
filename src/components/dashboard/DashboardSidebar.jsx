@@ -16,7 +16,7 @@ export default async function DashboardSidebar() {
 
     const user = session?.user
     const role = user?.role || 'tenant'
-    console.log(user)
+    //console.log(user)
 
     const dashboardItems ={
         owner: [{ icon: ChartColumn, label: "Home" , link:'/dashboard/owner'},
@@ -40,7 +40,7 @@ export default async function DashboardSidebar() {
     }
 
   const navItems = dashboardItems[role]
-  console.log(navItems)
+  //console.log(navItems)
 
 
   return (

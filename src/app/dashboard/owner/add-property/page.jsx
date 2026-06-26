@@ -1,20 +1,29 @@
 "use client";
-
+import { addProperty } from "@/lib/action/property";
+import { redirect } from "next/navigation";
 import React from "react";
+import toast from "react-hot-toast";
 
 const AddProperty = () => {
 
     const onSubmit = async (e) =>{
         e.preventDefault()
         const formData = new FormData(e.target)
-        const data = Object.
-
+        const amenities = formData.getAll("amenities");
+        const data = Object.fromEntries(formData.entries())
+        
+        const property ={
+            ...data,
+            amenities
+        }
+        const result = await addProperty(property)
+        toast.success("Property added successfully!")
+        redirect("/dashboard/owner/my-properties")
+        //console.log(result)
     }
 
     return (
-
-        <section className="min-h-screen bg-base-200 py-10 px-5">
-
+       <section className="min-h-screen bg-base-200 py-10 px-5">
 
             <div className="max-w-5xl mx-auto bg-base-300 border border-violet-400/20 rounded-3xl p-8 shadow-xl">
 
@@ -24,11 +33,9 @@ const AddProperty = () => {
                 </h1>
 
 
-                <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+                <form onSubmit={onSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-
-                    {/* Property Title */}
 
                     <div className="md:col-span-2">
 
@@ -38,6 +45,7 @@ const AddProperty = () => {
 
                         <input
                             type="text"
+                            name="title"
                             placeholder="Enter property title"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -46,9 +54,6 @@ const AddProperty = () => {
 
 
 
-
-                    {/* Description */}
-
                     <div className="md:col-span-2">
 
                         <label className="text-white font-medium">
@@ -56,6 +61,7 @@ const AddProperty = () => {
                         </label>
 
                         <textarea
+                            name="description"
                             placeholder="Describe your property"
                             className="textarea w-full mt-2 bg-base-200 border-violet-400/30 text-white h-32"
                         />
@@ -64,27 +70,36 @@ const AddProperty = () => {
 
 
 
+  <div>
 
-                    {/* Location */}
+    <label className="text-white font-medium">
+        Location
+    </label>
 
-                    <div>
+    <select
+        name="location"
+        defaultValue=""
+        className="select w-full mt-2 bg-base-200 border-violet-400/30 text-white"
+    >
 
-                        <label className="text-white font-medium">
-                            Location
-                        </label>
+        <option value="" disabled>
+            Select Division
+        </option>
 
-                        <input
-                            type="text"
-                            placeholder="City / Area"
-                            className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
-                        />
+        <option>Dhaka</option>
+        <option>Chattogram</option>
+        <option>Rajshahi</option>
+        <option>Khulna</option>
+        <option>Barishal</option>
+        <option>Sylhet</option>
+        <option>Rangpur</option>
+        <option>Mymensingh</option>
 
-                    </div>
+    </select>
+
+</div>
 
 
-
-
-                    {/* Property Type */}
 
                     <div>
 
@@ -92,7 +107,10 @@ const AddProperty = () => {
                             Property Type
                         </label>
 
-                        <select className="select w-full mt-2 bg-base-200 border-violet-400/30 text-white">
+                        <select
+                            name="propertyType"
+                            className="select w-full mt-2 bg-base-200 border-violet-400/30 text-white"
+                        >
 
                             <option>House</option>
                             <option>Office</option>
@@ -105,9 +123,6 @@ const AddProperty = () => {
 
 
 
-
-                    {/* Rent */}
-
                     <div>
 
                         <label className="text-white font-medium">
@@ -116,6 +131,7 @@ const AddProperty = () => {
 
                         <input
                             type="number"
+                            name="rentPrice"
                             placeholder="Enter amount"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -125,15 +141,16 @@ const AddProperty = () => {
 
 
 
-                    {/* Rent Type */}
-
                     <div>
 
                         <label className="text-white font-medium">
                             Rent Type
                         </label>
 
-                        <select className="select w-full mt-2 bg-base-200 border-violet-400/30 text-white">
+                        <select
+                            name="rentType"
+                            className="select w-full mt-2 bg-base-200 border-violet-400/30 text-white"
+                        >
 
                             <option>Monthly</option>
                             <option>Weekly</option>
@@ -146,8 +163,6 @@ const AddProperty = () => {
 
 
 
-                    {/* Bedrooms */}
-
                     <div>
 
                         <label className="text-white font-medium">
@@ -156,6 +171,7 @@ const AddProperty = () => {
 
                         <input
                             type="number"
+                            name="bedrooms"
                             placeholder="Number of bedrooms"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -165,8 +181,6 @@ const AddProperty = () => {
 
 
 
-                    {/* Bathrooms */}
-
                     <div>
 
                         <label className="text-white font-medium">
@@ -175,6 +189,7 @@ const AddProperty = () => {
 
                         <input
                             type="number"
+                            name="bathrooms"
                             placeholder="Number of bathrooms"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -184,8 +199,6 @@ const AddProperty = () => {
 
 
 
-                    {/* Property Size */}
-
                     <div>
 
                         <label className="text-white font-medium">
@@ -193,8 +206,9 @@ const AddProperty = () => {
                         </label>
 
                         <input
-                            type="text"
-                            placeholder="Example: 1200 sqft"
+                            type="number"
+                            name="size"
+                            placeholder="In sqft"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
 
@@ -203,40 +217,94 @@ const AddProperty = () => {
 
 
 
-                    {/* Amenities */}
 
-                    <div>
+                    {/* Amenities Dropdown */}
 
-                        <label className="text-white font-medium">
-                            Amenities
-                        </label>
-
-                        <input
-                            type="text"
-                            placeholder="WiFi, Parking, Balcony..."
-                            className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
-                        />
-
-                    </div>
-
-
-
-
-                    
-
-                   {/* Property Image */}
-
-<div className="md:col-span-2">
+                   <div>
 
     <label className="text-white font-medium">
-        Property Image
+        Amenities
     </label>
 
-    <input
-        type="url"
-        placeholder="https://example.com/image.jpg"
-        className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
-    />
+
+    <div className="mt-3 bg-base-200 border border-violet-400/30 rounded-xl p-4 space-y-3">
+
+
+        <label className="flex items-center gap-3 text-violet-200 cursor-pointer">
+
+            <input
+                type="checkbox"
+                name="amenities"
+                value="WiFi"
+                className="checkbox checkbox-sm"
+            />
+
+            WiFi
+
+        </label>
+
+
+
+        <label className="flex items-center gap-3 text-violet-200 cursor-pointer">
+
+            <input
+                type="checkbox"
+                name="amenities"
+                value="Parking"
+                className="checkbox checkbox-sm"
+            />
+
+            Parking
+
+        </label>
+
+
+
+        <label className="flex items-center gap-3 text-violet-200 cursor-pointer">
+
+            <input
+                type="checkbox"
+                name="amenities"
+                value="Swimming Pool"
+                className="checkbox checkbox-sm"
+            />
+
+            Swimming Pool
+
+        </label>
+
+
+
+        <label className="flex items-center gap-3 text-violet-200 cursor-pointer">
+
+            <input
+                type="checkbox"
+                name="amenities"
+                value="Balcony"
+                className="checkbox checkbox-sm"
+            />
+
+            Balcony
+
+        </label>
+
+
+
+        <label className="flex items-center gap-3 text-violet-200 cursor-pointer">
+
+            <input
+                type="checkbox"
+                name="amenities"
+                value="Security"
+                className="checkbox checkbox-sm"
+            />
+
+            Security
+
+        </label>
+
+
+    </div>
 
 </div>
 
@@ -244,7 +312,24 @@ const AddProperty = () => {
 
 
 
-                    {/* Extra Features */}
+                    <div className="md:col-span-2">
+
+                        <label className="text-white font-medium">
+                            Property Image
+                        </label>
+
+                        <input
+                            type="url"
+                            name="image"
+                            placeholder="https://example.com/image.jpg"
+                            className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
+                        />
+
+                    </div>
+
+
+
+
 
                     <div className="md:col-span-2">
 
@@ -253,6 +338,7 @@ const AddProperty = () => {
                         </label>
 
                         <textarea
+                            name="extraFeatures"
                             placeholder="Additional details..."
                             className="textarea w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -262,7 +348,6 @@ const AddProperty = () => {
 
 
 
-                    {/* Owner Name */}
 
                     <div>
 
@@ -272,6 +357,7 @@ const AddProperty = () => {
 
                         <input
                             type="text"
+                            name="ownerName"
                             placeholder="Owner name"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -281,8 +367,6 @@ const AddProperty = () => {
 
 
 
-                    {/* Owner Email */}
-
                     <div>
 
                         <label className="text-white font-medium">
@@ -291,6 +375,7 @@ const AddProperty = () => {
 
                         <input
                             type="email"
+                            name="ownerEmail"
                             placeholder="owner@email.com"
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-white"
                         />
@@ -300,8 +385,6 @@ const AddProperty = () => {
 
 
 
-                    {/* Status */}
-
                     <div>
 
                         <label className="text-white font-medium">
@@ -309,6 +392,7 @@ const AddProperty = () => {
                         </label>
 
                         <input
+                            name="status"
                             value="Pending"
                             readOnly
                             className="input w-full mt-2 bg-base-200 border-violet-400/30 text-violet-300"
@@ -319,16 +403,17 @@ const AddProperty = () => {
 
 
 
-                    {/* Submit */}
-
                     <div className="md:col-span-2 pt-4">
 
                         <button
                             type="submit"
                             className="w-full bg-violet-500 hover:bg-violet-600 text-white py-3 rounded-xl transition font-semibold"
                         >
+
                             Add Property
+
                         </button>
+
 
                     </div>
 
@@ -341,9 +426,7 @@ const AddProperty = () => {
 
 
         </section>
-
     );
 };
-
 
 export default AddProperty;

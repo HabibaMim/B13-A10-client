@@ -1,4 +1,5 @@
 import { Table } from "@heroui/react";
+import UpdatePropertyOwner from "./UpdatePropertyOwner";
 
 export default function ProductTable({ properties }) {
 
@@ -147,11 +148,7 @@ export default function ProductTable({ properties }) {
 
                     <Table.Cell className="!bg-base-300 border-none">
 
-                      <button
-                        className="btn btn-sm bg-violet-500 hover:bg-violet-600 text-white border-none"
-                      >
-                        Update
-                      </button>
+                      <UpdatePropertyOwner property={property}></UpdatePropertyOwner>
 
                     </Table.Cell>
 

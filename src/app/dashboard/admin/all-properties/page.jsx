@@ -1,9 +1,12 @@
+import AdminPropertyTable from '@/components/admin/AdminPropertyTable';
+import { getAdminProperty } from '@/lib/action/property';
 import React from 'react';
 
-const AllProperties = () => {
+const AllProperties = async () => {
+    const properties = await getAdminProperty();
     return (
         <div>
-            all properties
+            <AdminPropertyTable properties={properties}></AdminPropertyTable>
         </div>
     );
 };

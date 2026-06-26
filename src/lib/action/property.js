@@ -97,3 +97,29 @@ export const updateOwnerProperty = async (id, formData) => {
     revalidatePath("/owner/my-properties");
     return result;
 };
+
+//delete function
+
+export const deleteAdminProperty = async (id) => {
+   
+    const res = await authFetch(`${baseURL}/admin/properties/${id}`, {
+        method: "DELETE"
+       
+    });
+    const data = await res.json();
+    if (!res.ok) return;
+    revalidatePath("/admin/all-properties");
+    return data;
+}
+
+export const deleteOwnerProperty = async (id) => {
+   
+    const res = await authFetch(`${baseURL}/owner/properties/${id}`, {
+        method: "DELETE"
+       
+    });
+    const data = await res.json();
+    if (!res.ok) return;
+    revalidatePath("/owner/my-properties");
+    return data;
+}

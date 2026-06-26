@@ -1,6 +1,7 @@
 import { Table } from '@heroui/react';
 import React from 'react';
 import UpdatePropertyModal from '../owner/UpdatePropertyModal';
+import DeleteAdminModal from './DeleteAdminModal';
 
 const AdminPropertyTable = ({properties}) => {
     return (
@@ -132,11 +133,7 @@ const AdminPropertyTable = ({properties}) => {
             
                                 <Table.Cell className="!bg-base-300 border-none">
             
-                                  <button
-                                    className="btn btn-sm btn-error text-white border-none"
-                                  >
-                                    Delete
-                                  </button>
+                                  <DeleteAdminModal propertyId = {property._id}></DeleteAdminModal>
             
                                 </Table.Cell>
             

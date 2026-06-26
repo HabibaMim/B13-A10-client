@@ -183,7 +183,7 @@ const TopLocations = () => {
                         <div className="card-body">
 
                             <h3 className="text-xl font-semibold text-violet-300">
-                                Cox's Bazar
+                                Rajshahi
                             </h3>
 
                             <ul className="list-disc list-inside text-violet-200 text-sm space-y-1">

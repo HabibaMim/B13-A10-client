@@ -1,5 +1,6 @@
 import { Table } from "@heroui/react";
 import UpdatePropertyOwner from "./UpdatePropertyOwner";
+import DeleteOwnerModal from "./DeleteOwnerModal";
 
 export default function ProductTable({ properties }) {
 
@@ -158,11 +159,7 @@ export default function ProductTable({ properties }) {
 
                     <Table.Cell className="!bg-base-300 border-none">
 
-                      <button
-                        className="btn btn-sm btn-error text-white border-none"
-                      >
-                        Delete
-                      </button>
+                     <DeleteOwnerModal propertyId = {property._id}></DeleteOwnerModal>
 
                     </Table.Cell>
 

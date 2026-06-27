@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import toast from 'react-hot-toast';
 import { submitReview } from '@/lib/action/property';
+import FavoriteButton from './FavoriteButton';
 
 
 const ReviewSection = ({property, reviews}) => {
@@ -623,18 +624,7 @@ const ReviewSection = ({property, reviews}) => {
 
 
 
-                           <button
-
-                                className="flex-1 flex justify-center items-center gap-2 bg-violet-500 hover:bg-violet-600 text-white py-3 rounded-xl font-semibold"
-
-                            >
-
-                                <Heart size={20}/>
-
-                                Favorite
-
-
-                            </button>
+                      <FavoriteButton propertyId={property._id}></FavoriteButton>
 
 
 

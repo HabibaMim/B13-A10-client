@@ -189,3 +189,25 @@ export const getFeaturedReviews = async () => {
     const data = await res.json();
     return data;
 };
+
+//favorites
+
+export const toggleFavorite = async (propertyId) => {
+    const res = await authFetch(`${baseURL}/favorites/${propertyId}`, {
+        method: 'PATCH'
+    });
+
+    if (!res.ok) {
+        console.error("Toggle favorite failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    return data; // { favorited: true } or { favorited: false }
+};
+
+export const getFavorites = async () => {
+    const res = await authFetch(`${baseURL}/favorites`);
+    const data = await res.json();
+    return data;
+};

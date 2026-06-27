@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import FeaturedProperties from "@/components/FeaturedProperties";
 import ForOwners from "@/components/OwnersSection";
+import ReviewsHome from "@/components/ReviewsHome";
 import TopLocations from "@/components/TopLocations";
 import WhyChooseUs from "@/components/WhyChoose";
 
@@ -11,6 +12,7 @@ export default function Home() {
       <Banner></Banner>
       <FeaturedProperties></FeaturedProperties>
       <WhyChooseUs></WhyChooseUs>
+      <ReviewsHome></ReviewsHome>
       <TopLocations></TopLocations>
       <ForOwners></ForOwners>
     </div>

@@ -157,3 +157,35 @@ export const getDetailsPage = async(id)=>{
     const data =await res.json();
     return data || {};
 }
+
+//reviews
+
+export const submitReview = async (id, formData) => {
+    const raw = Object.fromEntries(formData.entries());
+
+    const res = await authFetch(`${baseURL}/properties/${id}/reviews`, {
+        method: 'POST',
+        body: JSON.stringify(raw)
+    });
+
+    if (!res.ok) {
+        console.error("Review submit failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    revalidatePath(`/properties/${id}`);
+    return data;
+};
+
+export const getPropertyReviews = async (id) => {
+    const res = await fetch(`${baseURL}/properties/${id}/reviews`);
+    const data = await res.json();
+    return data;
+};
+
+export const getFeaturedReviews = async () => {
+    const res = await fetch(`${baseURL}/reviews/featured`);
+    const data = await res.json();
+    return data;
+};

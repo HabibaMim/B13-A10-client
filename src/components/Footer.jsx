@@ -2,7 +2,6 @@
 import Image from 'next/image';
 import React from 'react';
 import logo from "../../public/assets/logo.png"
-import { motion } from "motion/react"
 import { usePathname } from 'next/navigation';
 
 const Footer = () => {
@@ -13,12 +12,9 @@ if(pathName.includes('dashboard')){
 }
 
     return (
-        <motion.div
+        <div
         
-               initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.1 }}
-    transition={{ duration: 0.3 }}
+          
         >
 
             <footer
@@ -185,7 +181,7 @@ if(pathName.includes('dashboard')){
 
             </footer>
 
-        </motion.div>
+        </div>
     );
 };
 

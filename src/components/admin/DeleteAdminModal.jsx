@@ -5,7 +5,7 @@ import React from 'react';
 const DeleteAdminModal = ({propertyId}) => {
 
     const handleDelete = async () =>{
-        "use server";
+        
         await deleteAdminProperty(propertyId);
     }
     return (

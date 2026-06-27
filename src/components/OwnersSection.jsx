@@ -1,11 +1,19 @@
+"use client";
 import React from "react";
 import { Building2, PlusCircle, CalendarCheck, Users, BarChart3 } from "lucide-react";
 import { HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
+import { motion } from "motion/react"
 
 const ForOwners = () => {
     return (
 
-        <section className="py-16 px-[60px] bg-base-200">
+        <motion.section
+        
+                 initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.8 }}
+        className="py-16 px-[60px] bg-base-200">
 
             <div className=" mx-auto px-5">
 
@@ -170,7 +178,7 @@ const ForOwners = () => {
             </div>
 
 
-        </section>
+        </motion.section>
 
     );
 };

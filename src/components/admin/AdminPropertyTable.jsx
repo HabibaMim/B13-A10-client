@@ -1,9 +1,38 @@
+"use client";
 import { Table } from '@heroui/react';
 import React from 'react';
 import UpdatePropertyModal from '../owner/UpdatePropertyModal';
 import DeleteAdminModal from './DeleteAdminModal';
+import { handleApproval } from '../../lib/action/property';
 
 const AdminPropertyTable = ({properties}) => {
+  
+  const getStatusBadge = (status) => {
+
+    if (status === "Approved") {
+      return (
+        <span className="badge badge-success text-white">
+          Approved
+        </span>
+      );
+    }
+
+    if (status === "Rejected") {
+      return (
+        <span className="badge badge-error text-white">
+          Rejected
+        </span>
+      );
+    }
+
+    return (
+      <span className="badge badge-warning text-black">
+        Pending
+      </span>
+    );
+
+  };
+
     return (
         <div>
              <section className="min-h-screen bg-base-200 p-6">
@@ -59,10 +88,15 @@ const AdminPropertyTable = ({properties}) => {
                             <Table.Column>
                               Delete
                             </Table.Column>
+
+
+                            <Table.Column>
+                              Status
+                            </Table.Column>
             
             
                             <Table.Column>
-                              Status
+                              Action
                             </Table.Column>
             
             
@@ -138,15 +172,21 @@ const AdminPropertyTable = ({properties}) => {
                                 </Table.Cell>
             
             
+                                  <Table.Cell className="!bg-base-300 border-none">
             
+                                  <p className="font-semibold text-white">
+                                    {getStatusBadge(property.status)}
+                                  </p>
+            
+                                </Table.Cell>
             
             
                                 <Table.Cell className="!bg-base-300 border-none">
             
                                  
     <div className="flex gap-2">
-        <button className="btn btn-success btn-sm text-white border-none">Approve</button>
-        <button className="btn btn-error btn-sm text-white border-none">Reject</button>
+        <button onClick={()=> handleApproval(property._id, "Approved")} className="btn btn-success btn-sm text-white border-none">Approve</button>
+        <button onClick={()=> handleApproval(property._id, "Rejected")}  className="btn btn-error btn-sm text-white border-none">Reject</button>
     </div>
 
             

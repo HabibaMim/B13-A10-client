@@ -53,7 +53,7 @@ if(pathName.includes('dashboard')){
                         </li>
 
                         <li className="font-semibold text-violet-200">
-                            <Link href="/rooms">All Properties</Link>
+                            <Link href="/properties">All Properties</Link>
                         </li>
 
                         {!isPending && session && <>
@@ -87,7 +87,7 @@ if(pathName.includes('dashboard')){
 
 
                     <li className="font-semibold text-[17px] text-violet-200">
-                        <Link href="/rooms">All Properties</Link>
+                        <Link href="/properties">All Properties</Link>
                     </li>
 
 

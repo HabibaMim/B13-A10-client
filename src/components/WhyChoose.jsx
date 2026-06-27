@@ -1,6 +1,7 @@
  "use client";
 import React from 'react';
 import { ShieldCheck, Home, CreditCard, Users, Star, LayoutDashboard } from "lucide-react";
+import { motion } from "motion/react"
 
 const WhyChooseUs = () => {
     const benefits = [
@@ -43,7 +44,14 @@ const WhyChooseUs = () => {
     ];
 
     return (
-        <section className="py-16 px-[60px] bg-base-200">
+        <motion.section
+        
+                 initial={{ opacity: 0, y: 30 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 0.8 }}
+
+        className="py-16 px-[60px] bg-base-200">
 
             <div className=" mx-auto px-5">
 
@@ -93,7 +101,7 @@ const WhyChooseUs = () => {
 
             </div>
 
-        </section>
+        </motion.section>
     );
 };
 

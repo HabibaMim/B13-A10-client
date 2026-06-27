@@ -66,7 +66,7 @@ export const updateAdminProperty = async (id, formData) => {
     }
 
     const result = await res.json();
-    revalidatePath("/admin/all-properties");
+    revalidatePath("/dashboard/admin/all-properties");
     return result;
 };
 
@@ -94,7 +94,7 @@ export const updateOwnerProperty = async (id, formData) => {
     }
 
     const result = await res.json();
-    revalidatePath("/owner/my-properties");
+    revalidatePath("/dashboard/owner/my-properties");
     return result;
 };
 
@@ -108,7 +108,7 @@ export const deleteAdminProperty = async (id) => {
     });
     const data = await res.json();
     if (!res.ok) return;
-    revalidatePath("/admin/all-properties");
+    revalidatePath("/dashboard/admin/all-properties");
     return data;
 }
 
@@ -120,6 +120,40 @@ export const deleteOwnerProperty = async (id) => {
     });
     const data = await res.json();
     if (!res.ok) return;
-    revalidatePath("/owner/my-properties");
+    revalidatePath("/dashboard/owner/my-properties");
     return data;
+}
+
+export const handleApproval = async (id, status) => {
+    const res = await authFetch(`${baseURL}/admin/properties/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ status })
+    });
+
+    if (!res.ok) {
+        console.error("Approval update failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    revalidatePath("dashboard/admin/all-properties");
+    return data;
+};
+
+export const getApprovedProperty = async () => {
+    const res = await fetch(`${baseURL}/properties?status=Approved`)
+    const data = await res.json();
+    return data;
+}
+
+export const fetchFeaturedProperties = async() =>{
+    const res = await fetch(`${baseURL}/featured`)
+    const data =await res.json();
+    return data || [];
+}
+
+export const getDetailsPage = async(id)=>{
+    const res = await authFetch(`${baseURL}/properties/${id}`)
+    const data =await res.json();
+    return data || {};
 }

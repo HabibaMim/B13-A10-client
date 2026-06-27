@@ -136,7 +136,7 @@ export const handleApproval = async (id, status) => {
     }
 
     const data = await res.json();
-    revalidatePath("dashboard/admin/all-properties");
+    revalidatePath("/dashboard/admin/all-properties");
     return data;
 };
 
@@ -224,5 +224,29 @@ export const deleteFavorite = async (id) => {
 
     const data = await res.json();
     revalidatePath("/dashboard/tenant/favorites");
+    return data;
+};
+
+//all users for admin page
+
+export const getAdminUsers = async () => {
+    const res = await authFetch(`${baseURL}/admin/users`)
+    const data = await res.json();
+    return data;
+}
+
+export const handleUserRole = async (id, role) => {
+    const res = await authFetch(`${baseURL}/admin/users/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ role })
+    });
+
+    if (!res.ok) {
+        console.error("Role update failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    revalidatePath("/dashboard/admin/all-users");
     return data;
 };

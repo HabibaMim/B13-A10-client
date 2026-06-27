@@ -61,6 +61,10 @@ const MyProfile = () => {
 
                     </div>
 
+                    
+
+
+
 
 
                 </div>
@@ -94,6 +98,34 @@ const MyProfile = () => {
 
                         <p className="text-white mt-1">
                             {session?.user?.email}
+                        </p>
+
+                    </div>
+
+                     <div className="bg-base-200 rounded-xl p-5 border border-violet-400/20">
+
+                        <p className="text-violet-300 text-sm font-medium">
+                            Role
+                        </p>
+
+                        <p className="text-white mt-1">
+                            {session?.user?.role}
+                        </p>
+
+                    </div>
+
+                     <div className="bg-base-200 rounded-xl p-5 border border-violet-400/20">
+
+                        <p className="text-violet-300 text-sm font-medium">
+                            Created at
+                        </p>
+
+                        <p className="text-white mt-1">
+                           {new Date(session?.user?.createdAt).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+})}
                         </p>
 
                     </div>

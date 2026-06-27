@@ -211,3 +211,18 @@ export const getFavorites = async () => {
     const data = await res.json();
     return data;
 };
+
+export const deleteFavorite = async (id) => {
+    const res = await authFetch(`${baseURL}/favorites/${id}`, {
+        method: "DELETE"
+    });
+
+    if (!res.ok) {
+        console.error("Delete favorite failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    revalidatePath("/dashboard/tenant/favorites");
+    return data;
+};

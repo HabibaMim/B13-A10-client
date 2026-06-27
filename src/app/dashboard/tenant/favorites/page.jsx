@@ -1,6 +1,7 @@
-import { getFavorites } from '@/lib/action/property';
+import { deleteFavorite, getFavorites } from '@/lib/action/property';
 import React from 'react';
 import { Table } from '@heroui/react';
+import RemoveFavoriteModal from '@/components/RemoveFavoriteModal';
 
 const FavoritesPage = async () => {
     const favorites = await getFavorites();
@@ -136,10 +137,7 @@ const FavoritesPage = async () => {
                                 <Table.Cell className="!bg-base-300 border-none">
             
                                  
-    <div className="flex gap-2">
-       
-        <button className="btn btn-error btn-sm text-white border-none">Remove</button>
-    </div>
+    <RemoveFavoriteModal propertyId = {favorite.property._id}></RemoveFavoriteModal>
 
             
                                 </Table.Cell>

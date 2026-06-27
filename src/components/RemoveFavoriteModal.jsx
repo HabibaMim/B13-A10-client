@@ -1,12 +1,12 @@
-import { deleteAdminProperty } from '@/lib/action/property';
-import { AlertDialog, Button } from '@heroui/react';
-import React from 'react';
+"use client";
+import { deleteFavorite } from "@/lib/action/property";
+import { AlertDialog, Button } from "@heroui/react";
 
-const DeleteAdminModal = ({propertyId}) => {
+const RemoveFavoriteModal = ({propertyId}) => {
 
     const handleDelete = async () =>{
         
-        await deleteAdminProperty(propertyId);
+        await deleteFavorite(propertyId);
     }
     return (
         <div>
@@ -14,7 +14,7 @@ const DeleteAdminModal = ({propertyId}) => {
       
 <Button className="btn btn-sm btn-error text-white border-none">
                 
-                  Delete
+                  Remove
                 </Button>
       <AlertDialog.Backdrop>
         <AlertDialog.Container>
@@ -22,7 +22,7 @@ const DeleteAdminModal = ({propertyId}) => {
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
-              <AlertDialog.Heading>Delete this property?</AlertDialog.Heading>
+              <AlertDialog.Heading>Remove From Favorites?</AlertDialog.Heading>
             </AlertDialog.Header>
          
             <AlertDialog.Footer>
@@ -30,7 +30,7 @@ const DeleteAdminModal = ({propertyId}) => {
                 Cancel
               </Button>
               <Button onClick={handleDelete} slot="close" variant="danger">
-                Delete
+                Remove
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>
@@ -41,4 +41,4 @@ const DeleteAdminModal = ({propertyId}) => {
     );
 };
 
-export default DeleteAdminModal;
+export default RemoveFavoriteModal;

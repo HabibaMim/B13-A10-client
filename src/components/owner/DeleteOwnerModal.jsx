@@ -22,7 +22,7 @@ const DeleteOwnerModal = ({propertyId}) => {
             <AlertDialog.CloseTrigger />
             <AlertDialog.Header>
               <AlertDialog.Icon status="danger" />
-              <AlertDialog.Heading>Delete this room?</AlertDialog.Heading>
+              <AlertDialog.Heading>Delete this property?</AlertDialog.Heading>
             </AlertDialog.Header>
          
             <AlertDialog.Footer>
@@ -30,7 +30,7 @@ const DeleteOwnerModal = ({propertyId}) => {
                 Cancel
               </Button>
               <Button onClick={handleDelete} slot="close" variant="danger">
-                Delete Room
+                Delete
               </Button>
             </AlertDialog.Footer>
           </AlertDialog.Dialog>

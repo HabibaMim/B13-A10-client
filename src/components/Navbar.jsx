@@ -94,7 +94,7 @@ if(pathName.includes('dashboard')){
                     {!isPending && session && <>
 
                         <li className="font-semibold text-[17px] text-violet-200">
-                            <Link href={`dashboard/${session?.user?.role}`}>Dashboard</Link>
+                            <Link href={`/dashboard/${session?.user?.role}`}>Dashboard</Link>
                         </li>
 
                     </>}

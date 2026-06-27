@@ -17,7 +17,7 @@ import { submitReview } from '@/lib/action/property';
 import FavoriteButton from './FavoriteButton';
 
 
-const ReviewSection = ({property, reviews}) => {
+const ReviewSection = ({property, reviews, isFavorited }) => {
       
         const onSubmit = async (e) => {
     e.preventDefault();
@@ -624,7 +624,7 @@ const ReviewSection = ({property, reviews}) => {
 
 
 
-                      <FavoriteButton propertyId={property._id}></FavoriteButton>
+                      <FavoriteButton propertyId={property._id} initialFavorited={isFavorited}></FavoriteButton>
 
 
 

@@ -6,7 +6,7 @@ const ReviewsHome = async () => {
     const reviews = await getFeaturedReviews();
     return (
 
-<section className="py-16 px-5 bg-base-200">
+<section className="py-16 bg-base-200">
 
 
     <div className="max-w-7xl mx-auto">

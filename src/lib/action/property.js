@@ -203,7 +203,7 @@ export const toggleFavorite = async (propertyId) => {
     }
 
     const data = await res.json();
-    return data; // { favorited: true } or { favorited: false }
+    return data;
 };
 
 export const getFavorites = async () => {

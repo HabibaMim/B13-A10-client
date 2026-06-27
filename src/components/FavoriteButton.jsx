@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Heart } from "lucide-react";
 import { toggleFavorite } from "@/lib/action/property";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const FavoriteButton = ({ propertyId, initialFavorited = false }) => {
+    const router =useRouter();
     const [favorited, setFavorited] = useState(initialFavorited);
 
     const onClick = async () => {
@@ -15,6 +17,8 @@ const FavoriteButton = ({ propertyId, initialFavorited = false }) => {
         if (result) {
             setFavorited(result.favorited);
             toast.success("Added To Favorites!")
+           router.refresh();
+            router.push('/properties')
         }
     };
 

@@ -1,12 +1,174 @@
 import { getFavorites } from '@/lib/action/property';
 import React from 'react';
+import { Table } from '@heroui/react';
 
 const FavoritesPage = async () => {
     const favorites = await getFavorites();
+    console.log(favorites)
     return (
         <div>
-            <div>{favorites.map((favorite)=>(</div>
-        </div>))};
+            
+                 <Table className="bg-base-300">
+            
+            
+            
+                      <Table.ScrollContainer>
+            
+            
+                        <Table.Content
+                          aria-label="Property table"
+                          className="min-w-[700px] bg-base-300 border-none"
+                        >
+            
+            
+            
+                          <Table.Header className="bg-base-300">
+            
+            
+                            <Table.Column isRowHeader>
+                              No.
+                            </Table.Column>
+            
+            
+                            <Table.Column>
+                              Property Title
+                            </Table.Column>
+            
+            
+                            <Table.Column>
+                              Type
+                            </Table.Column>
+            
+            
+                            <Table.Column>
+                              Rent Price
+                            </Table.Column>
+            
+            
+                            <Table.Column>
+                              Location
+                            </Table.Column>
+
+
+                          
+            
+            
+                            <Table.Column>
+                              Action
+                            </Table.Column>
+            
+            
+                          </Table.Header>
+            
+            
+            
+            
+            
+                          <Table.Body>
+            
+            
+                            {favorites.map((favorite, index)=>(
+            
+            
+                              <Table.Row
+                                key={favorite._id}
+                                className="!bg-base-300 hover:!bg-base-200 transition border-none"
+                              >
+            
+            
+            
+                                <Table.Cell className="!bg-base-300 border-none">
+            
+                                  <span className="text-violet-200">
+                                    {index + 1}
+                                  </span>
+            
+                                </Table.Cell>
+            
+            
+            
+            
+            
+                                <Table.Cell className="!bg-base-300 border-none">
+            
+                                  <p className="font-semibold text-white">
+                                    {favorite.property.title}
+                                  </p>
+            
+                                </Table.Cell>
+            
+            
+                                    <Table.Cell className="!bg-base-300 border-none">
+            
+                               <p className="font-semibold text-white">{favorite.property.propertyType}</p>
+            
+                                </Table.Cell>
+            
+            
+                                <Table.Cell className="!bg-base-300 border-none">
+            
+                                  <span className="text-violet-200">
+                                    ৳ {favorite.property.rentPrice} <span className="text-[10px] text-gray-400">/{favorite.property.rentType}</span>
+                                  </span>
+            
+                                </Table.Cell>
+            
+            
+            
+            
+            
+                            
+            
+            
+            
+            
+            
+                                <Table.Cell className="!bg-base-300 border-none">
+            
+                              <p className="font-semibold text-white">{favorite.property.location}</p> 
+            
+                                </Table.Cell>
+            
+            
+                                 
+            
+            
+                                <Table.Cell className="!bg-base-300 border-none">
+            
+                                 
+    <div className="flex gap-2">
+       
+        <button className="btn btn-error btn-sm text-white border-none">Remove</button>
+    </div>
+
+            
+                                </Table.Cell>
+            
+            
+            
+            
+            
+                              </Table.Row>
+            
+            
+                            ))}
+            
+            
+                          </Table.Body>
+            
+            
+            
+                        </Table.Content>
+            
+            
+            
+                      </Table.ScrollContainer>
+            
+            
+            
+                    </Table>
+        </div>
+     
     );
 };
 

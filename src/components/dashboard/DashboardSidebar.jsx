@@ -27,7 +27,7 @@ export default async function DashboardSidebar() {
             { icon: Person, label: "Profile" , link:'/dashboard/my-profile' },
         ],
 
-        tenant: [{ icon: Calendar, label: "My Bookings" , link:'/dashboard/tenant'},
+        tenant: [{ icon: Calendar, label: "My Bookings" , link:'/dashboard/tenant/my-bookings'},
             { icon: Heart, label: "Favorites" , link:'/dashboard/tenant/favorites'},
             { icon: Person, label: "Profile" , link:'/dashboard/my-profile' },
         ],

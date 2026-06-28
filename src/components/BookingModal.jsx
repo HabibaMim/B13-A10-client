@@ -2,9 +2,25 @@
 
 import React from "react";
 import { CalendarDays, Phone, User, FileText, X } from "lucide-react";
+import { addBooking } from "@/lib/action/property";
+import toast from "react-hot-toast";
 
-const BookingModal = () => {
+const BookingModal = ({propertyId}) => {
 
+    const handleBook = async (e)=>{
+        e.preventDefault();
+        const formData= new FormData(e.target)
+
+        const result = await addBooking(propertyId, formData)
+        if (result) {
+            toast.success("Booking initiated successfully! Complete payment to confirm.");
+             e.target.reset();
+        document.getElementById("booking_modal").close();
+        } else {
+            toast.error("Something went wrong.");
+            document.getElementById("booking_modal").close();
+        }
+    }
 
     return (
 
@@ -83,7 +99,7 @@ const BookingModal = () => {
 
 
 
-                    <form className="space-y-5">
+                    <form onSubmit={handleBook} className="space-y-5">
 
 
 
@@ -275,32 +291,70 @@ const BookingModal = () => {
 
 {/* Booking Status */}
 
-<div>
-
-    <label className="text-white font-medium flex items-center gap-2">
-
-        Booking Status
-
-    </label>
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
 
-    <input
+    {/* Booking Status */}
 
-        type="text"
+    <div>
 
-        name="bookingStatus"
+        <label className="text-white font-medium flex items-center gap-2">
 
-        value="Pending"
+            Booking Status
 
-        readOnly
+        </label>
 
-        className="input w-full mt-2 bg-base-200 border-violet-400/30 text-violet-300"
 
-    />
+        <input
+
+            type="text"
+
+            name="bookingStatus"
+
+            value="Pending"
+
+            readOnly
+
+            className="input w-full mt-2 bg-base-200 border-violet-400/30 text-violet-300"
+
+        />
+
+    </div>
+
+
+
+
+
+    {/* Payment Status */}
+
+    <div>
+
+        <label className="text-white font-medium flex items-center gap-2">
+
+            Payment Status
+
+        </label>
+
+
+        <input
+
+            type="text"
+
+            name="paymentStatus"
+
+            value="Pending"
+
+            readOnly
+
+            className="input w-full mt-2 bg-base-200 border-violet-400/30 text-violet-300"
+
+        />
+
+    </div>
+
 
 
 </div>
-
 
 
 

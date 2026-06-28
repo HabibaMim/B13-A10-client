@@ -271,3 +271,15 @@ export const addBooking = async (id, formData) => {
     revalidatePath("/dashboard/tenant/my-bookings");
     return data;
 };
+
+export const getBookings = async () => {
+    const res = await authFetch(`${baseURL}/bookings`);
+
+    if (!res.ok) {
+        console.error("Failed to fetch bookings:", res.status);
+        return [];
+    }
+
+    const data = await res.json();
+    return data;
+};

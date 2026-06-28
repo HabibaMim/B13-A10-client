@@ -632,7 +632,7 @@ const ReviewSection = ({property, reviews, isFavorited }) => {
 
 
 
-                            <BookingModal></BookingModal>
+                            <BookingModal propertyId={property._id}></BookingModal>
 
 
                         </div>

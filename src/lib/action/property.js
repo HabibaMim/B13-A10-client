@@ -283,3 +283,27 @@ export const getBookings = async () => {
     const data = await res.json();
     return data;
 };
+
+export const getAdminBookings = async () => {
+    const res = await authFetch(`${baseURL}/admin/bookings`);
+
+    if (!res.ok) {
+        console.error("Failed to fetch bookings:", res.status);
+        return [];
+    }
+
+    const data = await res.json();
+    return data;
+};
+
+export const getOwnerBookings = async () => {
+    const res = await authFetch(`${baseURL}/owner/bookings`);
+
+    if (!res.ok) {
+        console.error("Failed to fetch bookings:", res.status);
+        return [];
+    }
+
+    const data = await res.json();
+    return data;
+};

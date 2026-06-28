@@ -6,7 +6,8 @@ const MyBookings = async () => {
 
     const bookings = await getBookings();
     return (
-        <Table className="bg-base-300">
+       <div>
+         <Table className="bg-base-300">
             
             
             
@@ -159,6 +160,7 @@ const MyBookings = async () => {
             
             
                     </Table>
+       </div>
     );
 };
 

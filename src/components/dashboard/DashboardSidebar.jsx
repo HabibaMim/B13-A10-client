@@ -7,6 +7,7 @@ import { ChartColumn } from "lucide-react";
 import { auth } from "@/lib/auth";
 import { headers } from "next/headers";
 import Link from "next/link";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default async function DashboardSidebar() {
 
@@ -62,9 +63,10 @@ export default async function DashboardSidebar() {
         <div className="flex justify-center mb-6">
 
          <Link href='/'>
+         <div className="flex gap-[5px] btn bg-violet-500  hover:bg-violet-600 h-[34px] justify-center items-center"><p className="text-[14px] font-semibold">Home</p><FaSignOutAlt className="flex justify-start"/></div>
           <Image
             src={logo}
-            className="h-[65px] w-[85px] object-contain"
+            className="h-[65px] mt-[12px] w-[85px] object-contain"
             alt="logo"
           /></Link>
 

@@ -15,6 +15,7 @@ import {
 import toast from 'react-hot-toast';
 import { submitReview } from '@/lib/action/property';
 import FavoriteButton from './FavoriteButton';
+import BookingModal from './BookingModal';
 
 
 const ReviewSection = ({property, reviews, isFavorited }) => {
@@ -631,18 +632,7 @@ const ReviewSection = ({property, reviews, isFavorited }) => {
 
 
 
-                            <button
-
-                                className="flex-1 flex justify-center items-center gap-2 bg-violet-700 hover:bg-violet-800 text-white py-3 rounded-xl font-semibold"
-
-                            >
-
-                                <CalendarCheck size={20}/>
-
-                                Book
-
-
-                            </button>
+                            <BookingModal></BookingModal>
 
 
                         </div>

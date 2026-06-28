@@ -250,3 +250,24 @@ export const handleUserRole = async (id, role) => {
     revalidatePath("/dashboard/admin/all-users");
     return data;
 };
+
+//booking
+
+
+export const addBooking = async (id, formData) => {
+    const raw = Object.fromEntries(formData.entries());
+
+    const res = await authFetch(`${baseURL}/bookings/${id}`, {
+        method: "POST",
+        body: JSON.stringify(raw)
+    });
+
+    if (!res.ok) {
+        console.error("Booking failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    revalidatePath("/dashboard/tenant/my-bookings");
+    return data;
+};

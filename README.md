@@ -128,8 +128,8 @@ It connects tenants and property owners in one organized rental ecosystem.
 
 ### UI & Styling
 
-"tailwindcss"
-"daisyui"
-"@heroui/react"
-"lucide-react"
-"@gravity-ui/icons"
+- "tailwindcss"
+- "daisyui"
+- "@heroui/react"
+- "lucide-react"
+- "@gravity-ui/icons"

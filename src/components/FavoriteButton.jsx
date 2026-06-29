@@ -22,7 +22,7 @@ const FavoriteButton = ({ propertyId, initialFavorited = false }) => {
             toast.success("Added To Favorites!");
                router.refresh();
         } else {
-            toast.error("Something went wrong.");
+            toast.error("Something went wrong. Must be a tenant to favorite properties.");
         }
         setLoading(false);
     };

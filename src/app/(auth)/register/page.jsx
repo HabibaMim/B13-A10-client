@@ -24,8 +24,9 @@ const router =useRouter();
         return;
     }
 if(!error){
-    router.push('/login')
-    toast.success("Registration successful! Please login.");
+    router.push('/')
+    router.refresh();
+    toast.success("Registration successful!");
   }
 
     

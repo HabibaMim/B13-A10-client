@@ -10,8 +10,7 @@ import {
     Heart, 
     CalendarCheck,
     Star,
-    Sparkles
-} from "lucide-react";
+    Sparkles} from "lucide-react";
 import toast from 'react-hot-toast';
 import { submitReview } from '@/lib/action/property';
 import FavoriteButton from './FavoriteButton';
@@ -19,13 +18,18 @@ import BookingModal from './BookingModal';
 
 
 const ReviewSection = ({property, reviews, isFavorited }) => {
-      
+
         const onSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const result = await submitReview(property._id, formData); 
-     toast.success("Review Submitted!");
-    
+    const result = await submitReview(property._id, formData);
+
+    if (result) {
+        toast.success("Review Submitted!");
+        e.target.reset();
+    } else {
+        toast.error("Failed to submit review. Must be a tenant to submit review.");
+    }
         }
     return (
       <div>

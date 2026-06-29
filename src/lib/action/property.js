@@ -338,3 +338,15 @@ export const paymentStatusUpdate = async (id) => {
     const data = await res.json();
     return data;
 };
+
+export const getCompletedPayments = async () => {
+    const res = await authFetch(`${baseURL}/admin/bookings/payments`);
+
+    if (!res.ok) {
+        console.error("Failed to fetch payments:", res.status);
+        return [];
+    }
+
+    const data = await res.json();
+    return data;
+};

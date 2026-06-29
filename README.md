@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
 
-First, run the development server:
+██████╗ ███████╗███╗ ██╗████████╗███╗ ██╗███████╗███████╗████████╗
+██╔══██╗██╔════╝████╗ ██║╚══██╔══╝████╗ ██║██╔════╝██╔════╝╚══██╔══╝
+██████╔╝█████╗ ██╔██╗ ██║ ██║ ██╔██╗ ██║█████╗ ███████╗ ██║
+██╔══██╗██╔══╝ ██║╚██╗██║ ██║ ██║╚██╗██║██╔══╝ ╚════██║ ██║
+██║ ██║███████╗██║ ╚████║ ██║ ██║ ╚████║███████╗███████║ ██║
+╚═╝ ╚═╝╚══════╝╚═╝ ╚═══╝ ╚═╝ ╚═╝ ╚═══╝╚══════╝╚══════╝ ╚═╝
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+</div>
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 🏠 Property Rental & Booking Platform
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+A modern property rental marketplace that connects property owners and tenants. 
+Property owners can list and manage rental properties, while tenants can explore properties, make bookings, and manage their rental journey through a secure platform.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🌐 Live URL
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+https://rentnest-snowy.vercel.app
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Admin Credentials: 
+Admin Email: admin@gmail.com
+Admin Password: Asdfgh
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📌 Project Purpose
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The **Property Rental & Booking Platform** helps property owners list rental properties and allows tenants to discover, book, and pay reservation fees online.
+
+The platform creates a transparent and secure rental marketplace with:
+
+- Role-based access control
+- Property management
+- Booking workflows
+- Secure payment system
+- Review and rating system
+- Administrative moderation
+
+It connects tenants and property owners in one organized rental ecosystem.
+
+---
+
+# ✨ Key Features
+
+## 👤 Authentication & User Roles
+
+- Secure user authentication
+- Role-based dashboards:
+  - Tenant
+  - Property Owner
+  - Admin
+- Protected routes based on user permissions
+
+
+## 🏢 Property Owner Features
+
+- Add new properties
+- Manage listed properties
+- Update property information
+- View booking requests
+- Track rental activity
+
+
+## 🏠 Tenant Features
+
+- Browse available properties
+- View detailed property information
+- Add properties to favorites
+- Request property bookings
+- Submit reviews and ratings
+- Manage bookings
+
+
+## 🛡️ Admin Features
+
+- Manage all users
+- Manage properties
+- Approve/reject property listings
+- Manage bookings
+- Monitor platform activity
+
+
+## 💳 Booking & Payment
+
+- Property reservation system
+- Booking status tracking
+- Payment status management
+- Secure reservation workflow
+
+
+## ⭐ Review System
+
+- Tenant reviews
+- Rating system
+- User feedback display
+
+
+## 🎨 UI Features
+
+- Responsive design
+- Modern dashboard layouts
+- Dark theme rental marketplace design
+- Interactive components
+
+---
+
+# 🛠️ Technologies Used
+
+## Frontend
+
+- Next.js
+- React
+- Tailwind CSS
+- DaisyUI
+- Hero UI
+
+
+## Backend
+
+- Node.js
+- Express.js
+- MongoDB
+
+
+## Authentication
+
+- JWT Authentication
+- Role-based authorization
+
+
+---
+
+# 📦 NPM Packages Used
+
+### UI & Styling
+
+"tailwindcss"
+"daisyui"
+"@heroui/react"
+"lucide-react"
+"@gravity-ui/icons"

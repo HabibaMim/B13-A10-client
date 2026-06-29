@@ -7,9 +7,14 @@ const FavoritesPage = async () => {
     const favorites = await getFavorites();
     console.log(favorites)
     return (
-        <div>
+        <div className="min-h-screen bg-base-200 p-6">
+            <div>
+      <h2 className="text-3xl font-bold text-violet-300 mb-6">
+        My Favorites
+      </h2>
+      </div>
             
-                 <Table className="bg-base-300">
+                 <Table className="bg-base-300 border border-violet-400/20 rounded-3xl shadow-xl p-6 overflow-hidden">
             
             
             
@@ -109,7 +114,7 @@ const FavoritesPage = async () => {
                                 <Table.Cell className="!bg-base-300 border-none">
             
                                   <span className="text-violet-200">
-                                    ৳ {favorite.property.rentPrice} <span className="text-[10px] text-gray-400">/{favorite.property.rentType}</span>
+                                    $ {favorite.property.rentPrice} <span className="text-[10px] text-gray-400">/{favorite.property.rentType}</span>
                                   </span>
             
                                 </Table.Cell>

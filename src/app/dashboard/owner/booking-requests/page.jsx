@@ -1,13 +1,38 @@
 
+import BookingStatusSelect from '@/components/owner/BookingStatusSelect';
 import { getOwnerBookings } from '@/lib/action/property';
 import { Table } from '@heroui/react';
 import React from 'react';
 
 const AllBookings = async () => {
     const bookings = await getOwnerBookings();
+
+const getBookingStatusBadge = (status) => {
+    if (status === "Approved") {
+        return <span className="badge badge-success text-white">Approved</span>;
+    }
+    if (status === "Rejected") {
+        return <span className="badge badge-error text-white">Rejected</span>;
+    }
+    return <span className="badge badge-warning text-black">Pending</span>;
+};
+
+const getPaymentStatusBadge = (status) => {
+    if (status === "Paid") {
+        return <span className="badge badge-success text-white">Paid</span>;
+    }
+    return <span className="badge badge-warning text-black">Pending</span>;
+};
+
     return (
+    <div className="min-h-screen bg-base-200 p-6">
+            <div>
+      <h2 className="text-3xl font-bold text-violet-300 mb-6">
+        Booking Requests
+      </h2>
+      </div>
         <div>
-            <Table className="bg-base-300">
+            <Table className="bg-base-300 border border-violet-400/20 rounded-3xl shadow-xl p-6 overflow-hidden">
             
             
             
@@ -127,7 +152,7 @@ Contact Number
                                 <Table.Cell className="!bg-base-300 border-none">
             
                                   <span className="text-violet-200">
-                                    ৳ {booking.property.rentPrice} <span className="text-[10px] text-gray-400">/{booking.property.rentType}</span>
+                                    $ {booking.property.rentPrice} <span className="text-[10px] text-gray-400">/{booking.property.rentType}</span>
                                   </span>
             
                                 </Table.Cell>
@@ -148,22 +173,18 @@ Contact Number
             
                                 <Table.Cell className="!bg-base-300 border-none">
             
-                              <p className="font-semibold text-white">{booking.paymentStatus}</p> 
+                              <p className="font-semibold text-white">{getPaymentStatusBadge(booking.paymentStatus)}</p> 
             
                                 </Table.Cell>
 
                                      <Table.Cell className="!bg-base-300 border-none">
             
-                              <p className="font-semibold text-white">{booking.bookingStatus}</p> 
+                              <p className="font-semibold text-white">{getBookingStatusBadge(booking.bookingStatus)}</p> 
             
                                 </Table.Cell>
                                      <Table.Cell className="!bg-base-300 border-none">
             
-                           <div className="flex gap-2">
-        <button className="btn btn-success btn-sm text-white border-none">Approve</button>
-        <button className="btn btn-error btn-sm text-white border-none">Reject</button>
-    </div>
-            
+       <BookingStatusSelect bookingId={booking._id}></BookingStatusSelect>
                                 </Table.Cell>
 
                                 
@@ -197,6 +218,7 @@ Contact Number
             
                     </Table>
         </div>
+    </div>
     );
 };
 

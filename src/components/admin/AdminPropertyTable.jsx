@@ -39,7 +39,7 @@ const AdminPropertyTable = ({properties}) => {
             
             
                   <h2 className="text-3xl font-bold text-violet-300 mb-6">
-                    My Properties
+                    All Properties
                   </h2>
             
             
@@ -146,7 +146,7 @@ const AdminPropertyTable = ({properties}) => {
                                 <Table.Cell className="!bg-base-300 border-none">
             
                                   <span className="text-violet-200">
-                                    ৳ {property.rentPrice} <span className="text-[10px] text-gray-400">/{property.rentType}</span>
+                                    $ {property.rentPrice} <span className="text-[10px] text-gray-400">/{property.rentType}</span>
                                   </span>
             
                                 </Table.Cell>

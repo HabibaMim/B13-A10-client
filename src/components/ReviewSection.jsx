@@ -389,7 +389,7 @@ const ReviewSection = ({property, reviews, isFavorited }) => {
 
                                 <p className="text-white text-2xl font-bold">
 
-                                    ৳{property.rentPrice}
+                                    ${property.rentPrice}
 
                                     <span className="text-sm">
 
@@ -632,7 +632,7 @@ const ReviewSection = ({property, reviews, isFavorited }) => {
 
 
 
-                            <BookingModal propertyId={property._id}></BookingModal>
+                            <BookingModal propertyId={property._id} property={property}></BookingModal>
 
 
                         </div>

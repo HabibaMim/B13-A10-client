@@ -86,7 +86,7 @@ const FeaturedPropertiesClient = ({ properties }) => {
                                         </p>
 
                                         <p className="text-white font-semibold">
-                                            ৳ {property.rentPrice}/{property.rentType}
+                                            $ {property.rentPrice}/{property.rentType}
                                         </p>
 
                                     </div>

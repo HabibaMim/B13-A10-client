@@ -4,9 +4,31 @@ import React from 'react';
 
 const AllBookings = async () => {
     const bookings = await getAdminBookings();
+
+    const getBookingStatusBadge = (status) => {
+    if (status === "Approved") {
+        return <span className="badge badge-success text-white">Approved</span>;
+    }
+    if (status === "Rejected") {
+        return <span className="badge badge-error text-white">Rejected</span>;
+    }
+    return <span className="badge badge-warning text-black">Pending</span>;
+};
+
+const getPaymentStatusBadge = (status) => {
+    if (status === "Paid") {
+        return <span className="badge badge-success text-white">Paid</span>;
+    }
+    return <span className="badge badge-warning text-black">Pending</span>;
+};
     return (
-        <div>
-            <Table className="bg-base-300">
+        <div className="min-h-screen bg-base-200 p-6">
+            <div>
+      <h2 className="text-3xl font-bold text-violet-300 mb-6">
+        All Bookings
+      </h2>
+      </div>
+            <Table className="bg-base-300 border border-violet-400/20 rounded-3xl shadow-xl p-6 overflow-hidden">
             
             
             
@@ -55,11 +77,11 @@ Contact Number
             
             
                             <Table.Column>
-                              Booking State
+                              Payment State
                             </Table.Column>
             
                 <Table.Column>
-                              Payment State
+                              Booking State
                             </Table.Column>
 
               
@@ -123,7 +145,7 @@ Contact Number
                                 <Table.Cell className="!bg-base-300 border-none">
             
                                   <span className="text-violet-200">
-                                    ৳ {booking.property.rentPrice} <span className="text-[10px] text-gray-400">/{booking.property.rentType}</span>
+                                    $ {booking.property.rentPrice} <span className="text-[10px] text-gray-400">/{booking.property.rentType}</span>
                                   </span>
             
                                 </Table.Cell>
@@ -144,13 +166,13 @@ Contact Number
             
                                 <Table.Cell className="!bg-base-300 border-none">
             
-                              <p className="font-semibold text-white">{booking.paymentStatus}</p> 
+                              <p className="font-semibold text-white">{getPaymentStatusBadge(booking.paymentStatus)}</p> 
             
                                 </Table.Cell>
 
                                      <Table.Cell className="!bg-base-300 border-none">
             
-                              <p className="font-semibold text-white">{booking.bookingStatus}</p> 
+                              <p className="font-semibold text-white">{getBookingStatusBadge(booking.bookingStatus)}</p> 
             
                                 </Table.Cell>
 

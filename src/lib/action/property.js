@@ -268,7 +268,6 @@ export const addBooking = async (id, formData) => {
     }
 
     const data = await res.json();
-    revalidatePath("/dashboard/tenant/my-bookings");
     return data;
 };
 
@@ -302,6 +301,38 @@ export const getOwnerBookings = async () => {
     if (!res.ok) {
         console.error("Failed to fetch bookings:", res.status);
         return [];
+    }
+
+    const data = await res.json();
+    return data;
+};
+
+export const handleBookingRequest = async (id, bookingStatus) => {
+    const res = await authFetch(`${baseURL}/owner/bookings/${id}`, {
+        method: "PATCH",
+        body: JSON.stringify({ bookingStatus })
+    });
+
+    if (!res.ok) {
+        console.error(" Booking status update failed:", res.status);
+        return;
+    }
+
+    const data = await res.json();
+    revalidatePath("/dashboard/owner/booking-requests");
+    return data;
+};
+
+//stripe payment
+
+export const paymentStatusUpdate = async (id) => {
+    const res = await authFetch(`${baseURL}/bookings/${id}/payment`, {
+        method: "PATCH",
+    });
+
+    if (!res.ok) {
+        console.error("Payment status update failed:", res.status);
+        return;
     }
 
     const data = await res.json();

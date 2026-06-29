@@ -140,10 +140,16 @@ export const handleApproval = async (id, status) => {
     return data;
 };
 
-export const getApprovedProperty = async () => {
-    const res = await fetch(`${baseURL}/properties?status=Approved`)
+export const getApprovedProperty = async (search, propertyType) => {
+
+    const res = await fetch(
+        `${baseURL}/properties?status=Approved&search=${search || ""}&propertyType=${propertyType || ""}`
+    );
+
     const data = await res.json();
+
     return data;
+
 }
 
 export const fetchFeaturedProperties = async() =>{

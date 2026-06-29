@@ -5,9 +5,14 @@ import React from 'react';
 
 export const dynamic = 'force-dynamic';
 
-const AllPropertiesPublic = async () => {
+const AllPropertiesPublic = async ({ searchParams }) => {
 
-    const properties = await getApprovedProperty();
+    const params = await searchParams;
+
+    const search = params.search;
+    const propertyType = params.propertyType;
+
+    const properties = await getApprovedProperty(search, propertyType);
 
     return (
 

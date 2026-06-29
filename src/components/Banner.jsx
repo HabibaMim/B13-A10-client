@@ -3,6 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import banner from "../../public/assets/banner.jpg";
 import { motion } from "motion/react"
+import PropertySearch from './SearchProperty';
 
 const Banner = () => {
     return (
@@ -30,8 +31,10 @@ const Banner = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
 
                 
-                <div className="absolute inset-0 flex flex-col justify-center px-5 sm:px-8 md:px-16 text-purple-300">
-
+                <div className="absolute inset-0 flex flex-col justify-start px-5 sm:px-8 md:px-16 text-purple-300">
+                    <div className='mt-[20px] mb-[130px]'>
+                    <PropertySearch></PropertySearch>
+                    </div>
                     <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold max-w-xl leading-tight">
                         Find Your Perfect Place, Easily & Securely
                     </h1>

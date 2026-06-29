@@ -12,8 +12,8 @@ Property owners can list and manage rental properties, while tenants can explore
 https://rentnest-snowy.vercel.app
 
 Admin Credentials: 
-Admin Email: admin@gmail.com
-Admin Password: Asdfgh
+- Admin Email: admin@gmail.com
+- Admin Password: Asdfgh
 
 ---
 

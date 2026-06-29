@@ -5,7 +5,7 @@ import RemoveFavoriteModal from '@/components/RemoveFavoriteModal';
 
 const FavoritesPage = async () => {
     const favorites = await getFavorites();
-    console.log(favorites)
+    //console.log(favorites)
     return (
         <div className="min-h-screen bg-base-200 p-6">
             <div>

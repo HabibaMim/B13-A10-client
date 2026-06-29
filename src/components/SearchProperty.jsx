@@ -14,12 +14,13 @@ const PropertySearch = () => {
         const search = e.target.search.value;
         const propertyType = e.target.propertyType.value;
 
- console.log(search);
-    console.log(propertyType);
-        redirect(
-            `/properties?status=Approved&search=${search}&propertyType=${propertyType}`
-        );
+const minPrice = e.target.minPrice.value;
+const maxPrice = e.target.maxPrice.value;
 
+
+redirect(
+    `/properties?status=Approved&search=${search}&propertyType=${propertyType}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+);
     }
 
 
@@ -33,6 +34,35 @@ const PropertySearch = () => {
                 className="grid grid-cols-1 md:grid-cols-5 gap-3"
             >
 
+
+ {/* Location */}
+
+                <div className="relative">
+
+
+                    <MapPin
+
+                        size={18}
+
+                        className="absolute left-3 top-1/2 -translate-y-1/2 text-violet-300"
+
+                    />
+
+
+                    <input
+
+                        type="text"
+
+                        name="search"
+
+                        placeholder="Search location"
+
+                        className="input w-full h-12 pl-10 bg-base-200/70 border-violet-400/30 text-white focus:border-violet-400"
+
+                    />
+
+
+                </div>
 
                 {/* Property Type */}
 
@@ -109,34 +139,7 @@ const PropertySearch = () => {
 
 
 
-                {/* Location */}
-
-                <div className="relative">
-
-
-                    <MapPin
-
-                        size={18}
-
-                        className="absolute left-3 top-1/2 -translate-y-1/2 text-violet-300"
-
-                    />
-
-
-                    <input
-
-                        type="text"
-
-                        name="search"
-
-                        placeholder="Search location"
-
-                        className="input w-full h-12 pl-10 bg-base-200/70 border-violet-400/30 text-white focus:border-violet-400"
-
-                    />
-
-
-                </div>
+               
 
 
 

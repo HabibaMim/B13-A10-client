@@ -140,10 +140,15 @@ export const handleApproval = async (id, status) => {
     return data;
 };
 
-export const getApprovedProperty = async (search, propertyType) => {
+export const getApprovedProperty = async (
+    search,
+    propertyType,
+    minPrice,
+    maxPrice
+) => {
 
     const res = await fetch(
-        `${baseURL}/properties?status=Approved&search=${search || ""}&propertyType=${propertyType || ""}`
+        `${baseURL}/properties?status=Approved&search=${search || ""}&propertyType=${propertyType || ""}&minPrice=${minPrice || ""}&maxPrice=${maxPrice || ""}`
     );
 
     const data = await res.json();

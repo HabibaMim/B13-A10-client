@@ -1,3 +1,4 @@
+import PropertySearch from '@/components/SearchProperty';
 import { getApprovedProperty } from '@/lib/action/property';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -11,24 +12,34 @@ const AllPropertiesPublic = async ({ searchParams }) => {
 
     const search = params.search;
     const propertyType = params.propertyType;
+    const minPrice = params.minPrice;
+    const maxPrice = params.maxPrice;
 
-    const properties = await getApprovedProperty(search, propertyType);
+
+    const properties = await getApprovedProperty(
+        search,
+        propertyType,
+        minPrice,
+        maxPrice
+    );
 
     return (
 
         <section className="min-h-screen bg-base-200 py-12 px-5">
 
 
-            <div className="max-w-7xl mx-auto">
+          <div className="max-w-7xl mx-auto">
 
 
-                <h1 className="text-3xl md:text-4xl font-bold text-violet-300 mb-10 text-center">
+                <h1 className="text-3xl md:text-4xl font-bold text-violet-300 mb-[30px] text-center">
                     All Properties
                 </h1>
 
+                <PropertySearch></PropertySearch>
 
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <div className="grid grid-cols-1 mt-[30px] sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
 
 

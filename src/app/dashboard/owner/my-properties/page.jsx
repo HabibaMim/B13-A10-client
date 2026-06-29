@@ -6,7 +6,7 @@ import React from 'react';
 const MyProperties = async () => {
     const properties = await getOwnerProperty()
 
-    console.log(properties)
+    //console.log(properties)
     return (
         <div>
             <ProductTable properties={properties}></ProductTable>

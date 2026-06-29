@@ -16,7 +16,7 @@ const UpdatePropertyOwner = ({ property }) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const result = await updateOwnerProperty(property._id, formData);
-        console.log(result);
+        //console.log(result);
         closeModal();
         toast.success("Property information Updated!")
         router.push('/dashboard/owner/my-properties');

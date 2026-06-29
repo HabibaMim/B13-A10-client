@@ -15,7 +15,7 @@ const UpdatePropertyModal = ({ property }) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const result = await updateAdminProperty(property._id, formData);
-        console.log(result);
+        //console.log(result);
         closeModal();
         toast.success("Property information Updated!")
         router.push('/dashboard/admin/all-properties');

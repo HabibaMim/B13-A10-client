@@ -1,14 +1,6 @@
-<div align="center">
+# 🏠 RentNest
 
-| _ | | \ | | _| \ | | ____/ | _|
-| |) | _| | | | | | | | | _|| | | |
-| _ <| || |\ | | | | |\ | || || |__
-|| __|| _| || || _|_|_____|
-
-
-</div>
-
-### 🏠 Property Rental & Booking Platform
+### Property Rental & Booking Platform
 
 A modern property rental marketplace that connects property owners and tenants. 
 Property owners can list and manage rental properties, while tenants can explore properties, make bookings, and manage their rental journey through a secure platform.
